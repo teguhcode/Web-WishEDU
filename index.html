@@ -1,56 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate</title>
-</head>
-<body>
+function donasi() {
+    return `
+    <section class="donasi_page">
+        <div class="donasi_container">
+            <h2 class="donasi_title">Form Donasi Pendidikan</h2>
+            <p class="donasi_subtitle">
+                Setiap donasi Anda membantu menciptakan masa depan pendidikan yang lebih baik
+            </p>
 
-<header>
-    <h1>Donate </h1>
-</header>
+            <form class="donasi_form">
+                <div class="form_group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" placeholder="Masukkan nama anda" required>
+                </div>
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#/kampanye">Kampanye</a>
-    <a href="#/donasi">Halaman Donasi</a>
+                <div class="form_group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Masukkan email" required>
+                </div>
 
+                <div class="form_group">
+                    <label>Nominal Donasi</label>
+                    <input type="number" placeholder="Contoh: 50000" required>
+                </div>
 
-    <a href="#/relawan">Halaman Relawan</a>
-    <a href="#/kontak">Tentang & Kontak</a>
-</nav>
+                <div class="form_group">
+                    <label>Metode Pembayaran</label>
+                    <select required>
+                        <option value="">-- Pilih Metode --</option>
+                        <option>Transfer Bank</option>
+                        <option>E-Wallet</option>
+                        <option>Kartu Kredit</option>
+                    </select>
+                </div>
 
-<section id="donasi">
-    <h2>Donasi Pendidikan</h2>
-    <p>
-        Donasi pendidikan bertujuan untuk membantu siswa atau mahasiswa yang kurang mampu agar tetap dapat melanjutkan pendidikan.Bantuan yang diberikan akan digunakan secara tepat dan bertanggung jawab.
-    </p>
-
-    <h3>Tujuan Donasi</h3>
-    <ul>
-        <li>Membantu biaya sekolah dan kuliah</li>
-        <li>Pemberian beasiswa pendidikan</li>
-        <li>Penyediaan alat tulis dan perlengkapan belajar</li>
-    </ul>
-
-    <h3>Metode Donasi</h3>
-    <ul>
-        <li>Bank BCA : 8763937532</li>
-        <li>Bank BRI : 82362426486</li>
-        <li> GOPAY/OVO : 081982625422</li>
-    </ul>
-
-    <h3>Langkah Donasi</h3>
-    <ol>
-    <li> Pilih program donasi pendidikan</li>
-    <li> Lakukan transfer donasi</li>
-    <li> Konfirmasi donasi Anda</li>
-    </ol>
-
-    <p>
-        Terima kasih atas dukungan Anda dalam membantu pendidikan bagi mereka yang membutuhkan.
-    </p>
-</section>
-</body>
-</html>
+                <button type="submit" class="btn_donasi">
+                    <i class="bi bi-heart-fill"></i> Donasi Sekarang
+                </button>
+            </form>
+        </div>
+    </section>
+    `;
+}
