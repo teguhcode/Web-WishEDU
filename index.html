@@ -162,9 +162,11 @@ function relawan(){
 }
 
 function kontak(){
-    function kontak(){
+    function kontak() {
     return `
-        <section class="tentang_kontak">
+        <section class="page_kontak">
+            <h1>Tentang & Kontak</h1>
+
             <div class="tentang_box">
                 <h2>Tentang EduFund</h2>
                 <p>
@@ -175,14 +177,25 @@ function kontak(){
             </div>
 
             <div class="kontak_box">
-                <h2>Kontak Kami</h2>
-                <p>Email: edufund@gmail.com</p>
-                <p>Telepon: 0812-3456-7890</p>
-                <p>Alamat: Denpasar, Indonesia</p>
+                <h2>Informasi Kontak</h2>
+                <p><strong>Email:</strong> edufund@gmail.com</p>
+                <p><strong>Telepon:</strong> 0812-3456-7890</p>
+                <p><strong>Alamat:</strong> Denpasar, Indonesia</p>
+            </div>
+
+            <div class="form_kontak">
+                <h2>Form Kontak </h2>
+                <form onsubmit="return false;">
+                    <input type="text" placeholder="Nama" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Pesan"></textarea>
+                    <button type="submit">Kirim</button>
+                </form>
             </div>
         </section>
     `;
 }
+
 }
 
 
