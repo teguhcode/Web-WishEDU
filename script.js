@@ -184,7 +184,7 @@ function kampanye() {
                 <p class="label">Donasi Terkumpul</p>
                 <p class="nominal">Rp 25.000.000</p>
             </div>
-          <button class="tombol-donasi" onclick="App.navigasi('donasi')">Donasi Sekarang</button>
+          <button onclick="App.navigasi('donasi')">Donasi Sekarang</button>
         </div>
       </div>
 
@@ -198,7 +198,7 @@ function kampanye() {
                 <p class="label">Donasi Terkumpul</p>
                 <p class="nominal">Rp 50.000.000</p>
             </div>
-          <button class="tombol-donasi" onclick="App.navigasi('donasi')">Donasi Sekarang</button>
+          <button onclick="App.navigasi('donasi')">Donasi Sekarang</button>
         </div>
       </div>
 
@@ -212,7 +212,7 @@ function kampanye() {
                 <p class="label">Donasi Terkumpul</p>
                 <p class="nominal">Rp 70.000.000</p>
             </div>
-          <button class="tombol-donasi" onclick="App.navigasi('donasi')">Donasi Sekarang</button>
+          <button onclick="App.navigasi('donasi')">Donasi Sekarang</button>
         </div>
       </div>
 
@@ -226,7 +226,7 @@ function kampanye() {
                 <p class="label">Donasi Terkumpul</p>
                 <p class="nominal">Rp 65.000.000</p>
             </div>
-          <button class="tombol-donasi" onclick="App.navigasi('donasi')">Donasi Sekarang</button>
+          <button onclick="App.navigasi('donasi')">Donasi Sekarang</button>
         </div>
       </div>
 
@@ -240,7 +240,7 @@ function kampanye() {
                 <p class="label">Donasi Terkumpul</p>
                 <p class="nominal">Rp 80.000.000</p>
             </div>
-          <button class="tombol-donasi" onclick="App.navigasi('donasi')">Donasi Sekarang</button>
+          <button onclick="App.navigasi('donasi')">Donasi Sekarang</button>
         </div>
       </div>
 
@@ -254,7 +254,7 @@ function kampanye() {
                 <p class="label">Donasi Terkumpul</p>
                 <p class="nominal">Rp 40.000.000</p>
             </div>
-          <button class="tombol-donasi" onclick="App.navigasi('donasi')">Donasi Sekarang</button>
+          <button onclick="App.navigasi('donasi')">Donasi Sekarang</button>
         </div>
       </div>
 
@@ -271,20 +271,76 @@ function donasi() {
 }
 
 
-function relawan() {  
+function relawan() {
   return `
-        <div>
-            <p>relawan</p>
-        </div>
-    `;
+    <div class="tampilan-relawan-atas">
+      <h1>Membangun Pendidikan,<br>Membangun Masa Depan</h1>
+      <p>
+        Bersama, kita wujudkan pendidikan berkualitas
+        untuk setiap anak Indonesia
+      </p><br>
+      <button onclick="document.querySelector('.relawan-page').scrollIntoView({ behavior: 'smooth' });">Daftar Menjadi Relawan</button>
+    </div>
+
+    <div class="relawan-page">
+      <h2>Formulir Pendaftaran Relawan EduFund</h2>
+      <p>Isi formulir di bawah ini untuk bergabung sebagai relawan kami dalam mendukung pendidikan anak-anak Indonesia.</p><br>
+      <input type="text" id="nama" placeholder="Masukkan Nama Lengkap">
+      <input type="email" id="email" placeholder="Masukkan Email">
+      <input type="text" id="hp" placeholder="Masukkan No.HP">
+      <textarea id="alasan" placeholder="Alasan ingin menjadi relawan"></textarea>
+
+      <button onclick="simpanRelawan()">Kirim</button>
+    </div>
+  `;
+}
+function simpanRelawan() {
+  const nama = document.getElementById("nama").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const hp = document.getElementById("hp").value.trim();
+  const alasan = document.getElementById("alasan").value.trim();
+  let valid = true;
+
+  // Validasi semua input wajib diisi
+  if (!nama || !email || !hp || !alasan) {
+    alert("ISI TERLEBIH DAHULU FORMULIRNYA");
+    valid = false;
+  }
+
+  // Validasi email
+  const emailInput = document.getElementById("email");
+  if (!email.includes("@")) {
+    emailInput.classList.add("input-error"); 
+    emailInput.classList.remove("shake");
+    void emailInput.offsetWidth;
+    emailInput.classList.add("shake");
+    valid = false;
+  } else {
+    emailInput.classList.remove("input-error");
+    emailInput.classList.remove("shake");
+  }
+  if (!valid) return;
+
+  // Simpan ke localStorage
+  let relawan = JSON.parse(localStorage.getItem("relawan")) || [];
+  relawan.push({ nama, email, hp, alasan });
+  localStorage.setItem("relawan", JSON.stringify(relawan));
+  console.log("Data tersimpan (localStorage):", relawan);
+  alert("Terima kasih telah mendaftar sebagai relawan EduFund!");
+
+  document.getElementById("nama").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("hp").value = "";
+  document.getElementById("alasan").value = "";
 }
 
+
 function kontak() {
-  return `
+     return `
         <div>
-            <p>tentang & kontak</p>
-        </div>
-    `;
+            <p>kontak</p>
+          </div>  
+  `;
 }
 
 function login() {

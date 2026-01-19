@@ -443,7 +443,7 @@ img {
 }
 .gambar-atas {
   width: 100%;
-  height: 600px;
+  height: 400px;
   object-fit: cover;
 }
 .teks-atas {
@@ -453,7 +453,7 @@ img {
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   padding: 20px 30px;
   border-radius: 10px;
 }
@@ -490,10 +490,8 @@ padding: 20px;
 display: flex;
 flex-direction: column; flex: auto;
 }
-/* ===== TOMBOL ===== */
-.tombol-donasi {
-  margin-top: 10px;
-  padding: 10px 20px;
+.kotak-kampanye button{
+padding: 10px 20px;
   border: none;
   background: #2ea44f;
   color: white;
@@ -501,11 +499,95 @@ flex-direction: column; flex: auto;
   cursor: pointer;
   transition: transform 0.2s;
   margin-top: auto;
+  text-align: center;
 }
-.tombol-donasi:hover {
+.kotak-kampanye button:hover {
   background: rgb(222, 146, 6);
+    transform: scale(1.05);
 }
-/* animasi pop tombol */
-.tombol-donasi:hover {
-  transform: scale(1.1);
+   
+/* HALAMAN RELAWAN */
+
+/* Tampilan atas relawan */
+.tampilan-relawan-atas {
+  background-color: #38b000;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+.tampilan-relawan-atas h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+.tampilan-relawan-atas p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.tampilan-relawan-atas button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: white;
+  color: rgb(6, 188, 6);
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.tampilan-relawan-atas button:hover {
+  background-color: rgb(230, 145, 60);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Form relawan */
+.relawan-page {
+  max-width: 500px;
+  margin: 40px auto 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.relawan-page input,
+.relawan-page textarea {
+  padding: 12px 15px;
+  border: 1px solid var(--dark-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+}
+.relawan-page textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.relawan-page button {
+  background: var(--primary-color);
+  color: var(--white-color);
+  padding: 12px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.relawan-page button:hover {
+  background: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+
+/* ===VALIDASI=== */
+.input-error {
+  border-color: red;
+}
+/* Animasi getar */
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-5px); }
+  50%  { transform: translateX(5px); }
+  75%  { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+.shake {
+  animation: shake 0.4s;
 }
