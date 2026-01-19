@@ -1,274 +1,355 @@
 const rootApp = document.getElementById("app");
 
 const DataStore = {
-    autentikasi: {
-        terdaftar: false,
-        username: null
-    },
+  autentikasi: {
+    terdaftar: false,
+    username: null,
+  },
 };
 
-const TARGET_DONASI = 1000000; 
-
-function navbar(){
-    const { terdaftar } = DataStore.autentikasi;
-    return `
+function navbar() {
+  const { terdaftar } = DataStore.autentikasi;
+  return `
         <nav class="navbar">
             <a href="#" class="navbar-logo">EduFund</a>
-            <div class="navbar-nav">
-                <a href="#/home">Home</a>
-                <a href="#/kampanye">Kampanye</a>
-                <a href="#/donasi">Donasi</a>
-                <a href="#/relawan">Relawan</a>
-                <a href="#/kontak">Tentang & Kontak</a>
-                ${terdaftar
-                    ? '<a onclick="App.navigasi(\'admin\')">Admin</a>'
-                    : '<a onclick="App.navigasi(\'login\')">Login</a>'
-                }
-                ${terdaftar
-                    ? '<button onclick="App.logout()">Logout</button>'
-                    : ''
-                }
+            
+            <div class="navbar-container">
+                <div class="navbar-nav">
+                    <a href="#/home">Home</a>
+                    <a href="#/kampanye">Kampanye</a>
+                    <a href="#/relawan">Relawan</a>
+                    <a href="#/kontak">Tentang & Kontak</a>
+                    ${
+                      terdaftar
+                        ? "<a onclick=\"App.navigasi('admin')\">Admin</a>"
+                        : "<a onclick=\"App.navigasi('login')\">Login</a>"
+                    }
+                </div>  
+
+                <div class="navbar-actions">
+                    ${
+                      terdaftar
+                        ? `<a onclick="App.logout()" class="nav-logout">Logout</a>`
+                        : ""
+                    }
+                    <a href="#/donasi" class="nav-donasi">Donasi Sekarang</a>
+                </div>
             </div>
         </nav>
     `;
 }
 
-
-function footer(){
-    return `
+function footer() {
+  return `
         <footer class="footer">
-            <div class="footer_content">
+            <div class="footer-content">
                 <div>
-                    <h3 class="footer_title">Tentang EduFund</h3>
-                    <p>
-                        Bersama menyalurkan kepedulian melalui donasi pendidikan untuk
-                        menciptakan akses belajar yang merata dan berkelanjutan
-                    </p>
+                    <h3 class="footer-title">Tentang EduFund</h3>
+                    <p class=footer-text>Bersama menyalurkan kepedulian melalui donasi pendidikan untuk menciptakan akses belajar
+                    yang merata dan bekelanjutan bagi generasi masa depan</p>
                 </div>
-
-                <div>
-                    <h3 class="footer_title">Quick Links</h3>
-                    <ul class="footer_links">
-                        <li><a onclick="App.navigasi('home')">Home</a></li>
-                        <li><a onclick="App.navigasi('kampanye')">Kampanye</a></li>
-                        <li><a onclick="App.navigasi('relawan')">Relawan</a></li>
-                        <li><a onclick="App.navigasi('kontak')">Kontak</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="footer_title">Kontak Informasi</h3>
-                    <p>📍 Denpasar</p>
-                    <p>📞 +62 01-002-003</p>
-                    <p>✉️ EduFund@gmail.com</p>
+                
+                <div class="footer-container">
+                    <div>
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a class="footer-link" onclick="App.navigasi('home')">Home</a></li>
+                            <li><a class="footer-link" onclick="App.navigasi('kampanye')">Kampanye</a></li>
+                            <li><a class="footer-link" onclick="App.navigasi('relawan')">Relawan</a></li>
+                            <li><a class="footer-link" onclick="App.navigasi('kontak')">Kontak</a></li>
+                        </ul>
+                    </div>
+                                    
+                    <div>
+                        <h3 class="footer-title">Kontak Informasi</h3>
+                        <p><i class="bi bi-geo-alt-fill"></i> Di Denpasar</p>
+                        <p><i class="bi bi-telephone-fill"></i> +62 01-002-003</p>
+                        <p><i class="bi bi-envelope-at-fill"></i> EduFund@gmail.com</p>
+                    </div>
                 </div>
             </div>
-            <div class="footer_bottom">
-                <p>&copy; 2026 EduFund</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 EduFund | Dibuat untuk memajukan pendidikan di Indonesia</p>
             </div>
         </footer>
     `;
 }
 
-
 function home() {
-    return `
+  return `
         <div class="home">
-            <h1>Membangun Pendidikan, Membangun Masa Depan</h1>
-            <p>Bersama kita wujudkan pendidikan berkualitas</p>
-            <button onclick="App.navigasi('donasi')">Donasi Sekarang</button>
+            <div class="home-side-image left">
+                <img src="asset/anak_sekolah.jpg" alt="Education">
+            </div>
+
+            <div class="home-content">
+                <h1 class="title">Membangun Pendidikan, Membangun Masa Depan</h1>
+                <p class="subtitle">Bersama, kita wujudkan pendidikan berkualitas untuk setiap anak</p>
+                <button class="klik-donasi" onclick="App.navigasi('donasi')">Donasi Sekarang</button>
+            </div>
+
+            <div class="home-side-image right">
+                <img src="asset/Volunteers_Support.jpg" alt="Students">
+            </div>
+        </div>
+
+        <section class="main-split-container">
+            <div class="split-wrapper">
+                
+                <div class="stats-side-area">
+                    <div class="stat-box">
+                        <div class="stat-info">
+                            <p>Total Donasi</p>
+                            <h3>Rp 75.000.000+</h3>
+                        </div>
+                    </div>
+
+                    <div class="stat-box">
+                        <div class="stat-info">
+                            <p>Jumlah Relawan</p>
+                            <h3>200+</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-info">
+                            <p>Kampanye Aktif</p>
+                            <h3>3</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="campaign-side-area">
+                    <h3 class="kampanye-section-title">Kampanye Aktif</h3>
+                    
+                    <div class="kampanye-list-vertical">
+                        <div class="kampanye-card-custom">
+                            <div class="kampanye-img-box">
+                                <img src="asset/baju_sekolah.jpg" alt="Bantuan Seragam">
+                            </div>
+                            <div class="kampanye-details">
+                                <h3>Bantuan Seragam Sekolah</h3>
+                                <p>Membantu siswa kurang mampu mendapatkan seragam sekolah layak</p>
+                                <div class="donasi-info">
+                                    <p class="label">Donasi Terkumpul</p>
+                                    <p class="nominal">Rp 25.000.000</p>
+                                </div>
+                                <button class="klik-donasi-kecil" onclick="App.navigasi('donasi')">Donasi Sekarang</button>
+                            </div>
+                        </div>
+
+                        <div class="kampanye-card-custom">
+                            <div class="kampanye-img-box">
+                                <img src="asset/bantuan_beasiswa.jpg" alt="Beasiswa">
+                            </div>
+                            <div class="kampanye-details">
+                                <h3>Beasiswa Pelajar</h3>
+                                <p>Program bantuan pendidikan siswa berprestasi</p>
+                            <div class="donasi-info">
+                                <p class="label">Donasi Terkumpul</p>
+                                <p class="nominal">Rp 50.000.000</p>
+                            </div>
+                                <button class="klik-donasi-kecil" onclick="App.navigasi('donasi')">Donasi Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="center-link">
+                        <button class="klik-kampanye" onclick="App.navigasi('kampanye')">Lihat Semua</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+  `;
+}
+function kampanye() {
+  return `
+        <div>
+            <p>kampanye</p>
         </div>
     `;
-}
-
-function kampanye(){
-    return `<p>Halaman Kampanye</p>`;
 }
 
 function donasi() {
-    return `
-    <section class="donasi_page">
-        <div class="donasi_container">
-            <h2 class="donasi_title">Form Donasi Pendidikan</h2>
-            <p class="donasi_subtitle">
-                Setiap donasi Anda membantu menciptakan masa depan pendidikan yang lebih baik
-            </p>
+  return `
+        <div>
+            <p>donasi</p>
+        </div>
+    `;
+}
 
-            <div class="progress_wrapper">
-                <p>Progress Donasi</p>
-                <div class="progress_bar">
-                    <div id="progress_fill"></div>
+function relawan() {
+  return `
+        <div>
+            <p>relawan</p>
+        </div>
+    `;
+}
+
+function kontak() {
+     return `
+    <section class="kontak-page">
+      <div class="kontak-container">
+
+        <div class="kontak-info">
+          <h2>Tentang EduFund</h2>
+          <p>
+            <strong>EduFund</strong> adalah organisasi sosial yang bergerak di bidang
+            penggalangan dana pendidikan. Kami berfokus membantu anak-anak Indonesia
+            mendapatkan akses pendidikan yang layak melalui program donasi,
+            kampanye sosial, dan relawan.
+          </p>
+
+          <h3>Visi</h3>
+          <p>
+            Mewujudkan pemerataan pendidikan yang berkualitas bagi seluruh generasi muda Indonesia.
+          </p>
+
+          <h3>Misi</h3>
+          <ul>
+            <li>Menghimpun dana pendidikan secara transparan</li>
+            <li>Mendukung siswa kurang mampu melalui program beasiswa</li>
+            <li>Mengajak masyarakat berperan aktif sebagai relawan pendidikan</li>
+          </ul>
+
+          <h3>Informasi Kontak</h3>
+          <p><i class="bi bi-geo-alt-fill"></i> Denpasar, Bali</p>
+          <p><i class="bi bi-telephone-fill"></i> +62 01-002-003</p>
+          <p><i class="bi bi-envelope-at-fill"></i> EduFund@gmail.com</p>
+        </div>
+
+        <div class="kontak-form">
+          <h2>Hubungi Kami</h2>
+
+          <div class="form-group">
+            <label>Nama</label>
+            <input type="text" id="namaKontak" placeholder="Masukkan nama" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="emailKontak" placeholder="Masukkan email" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Pesan</label>
+            <textarea id="pesanKontak" rows="5" placeholder="Tulis pesan Anda" class="form-control"></textarea>
+          </div>
+
+          <button class="form-submit" onclick="App.kirimPesan()">Kirim Pesan</button>
+        </div>
+
+      </div>
+    </section>
+  `;
+}
+ 
+
+
+function login() {
+  return `
+        <div class="login-page">
+            <div class="login-card">
+                <h2 class="form-title">Login</h2>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="user" placeholder="Username" class="form-control">
                 </div>
-                <small id="progress_text"></small>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="pass" placeholder="Password" class="form-control">
+                </div>
+
+                <button class="form-submit" onclick="App.prosesLogin()">Login</button>
             </div>
-
-            <form class="donasi_form" onsubmit="handleDonasi(event)">
-                <div class="form_group">
-                    <label>Nama Lengkap</label>
-                    <input id="nama" type="text" placeholder="Masukkan nama anda">
-                </div>
-
-                <div class="form_group">
-                    <label>Email</label>
-                    <input id="email" type="email" placeholder="Masukkan email">
-                </div>
-
-                <div class="form_group">
-                    <label>Nominal Donasi</label>
-                    <input id="nominal" type="number" placeholder="Contoh: 50000">
-                </div>
-
-                <div class="form_group">
-                    <label>Metode Pembayaran</label>
-                    <select id="metode">
-                        <option value="">-- Pilih Metode --</option>
-                        <option>Transfer Bank</option>
-                        <option>E-Wallet</option>
-                        <option>Kartu Kredit</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn_donasi">
-                    Donasi Sekarang
-                </button>
-            </form>
         </div>
-    </section>
     `;
 }
 
-
-function relawan(){
-    return `<p>Halaman Relawan</p>`;
-}
-
-function kontak(){
+function admin() {
     return `
-    <section class="tentang_kontak">
-        <div class="tentang_box">
-            <h2>Tentang EduFund</h2>
-            <p>
-                EduFund merupakan platform donasi pendidikan yang bertujuan
-                membantu pemerataan akses belajar bagi anak-anak Indonesia
-                melalui kampanye dan partisipasi masyarakat.
-            </p>
-        </div>
-
-        <div class="kontak_box">
-            <h2>Kontak Kami</h2>
-
-            <form onsubmit="kirimPesan(event)">
-                <input type="text" placeholder="Nama" required>
-                <input type="email" placeholder="Email" required>
-                <textarea rows="4" placeholder="Pesan" required></textarea>
-                <button type="submit">Kirim</button>
-            </form>
-        </div>
-    </section>
+        <div>Admin</div>
     `;
 }
-
-function kirimPesan(e) {
-    e.preventDefault();
-    alert("Pesan berhasil dikirim!");
-}
-
-
-
-function handleDonasi(event) {
-    event.preventDefault();
-
-    const nama = document.getElementById("nama").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const nominal = document.getElementById("nominal").value;
-    const metode = document.getElementById("metode").value;
-
-    if (nama.length < 3) {
-        alert("Nama minimal 3 karakter");
-        return;
-    }
-
-    if (!email.includes("@")) {
-        alert("Email tidak valid");
-        return;
-    }
-
-    if (nominal <= 0) {
-        alert("Nominal donasi harus lebih dari 0");
-        return;
-    }
-
-    if (metode === "") {
-        alert("Pilih metode pembayaran");
-        return;
-    }
-
-    let riwayat = JSON.parse(localStorage.getItem("donasi")) || [];
-
-    riwayat.push({
-        nama,
-        email,
-        nominal: Number(nominal),
-        metode,
-        tanggal: new Date().toLocaleDateString()
-    });
-
-    localStorage.setItem("donasi", JSON.stringify(riwayat));
-
-    alert("Terima kasih! Donasi Anda berhasil ❤️");
-
-    updateProgress();
-    event.target.reset();
-}
-
-function updateProgress() {
-    const riwayat = JSON.parse(localStorage.getItem("donasi")) || [];
-    const total = riwayat.reduce((sum, d) => sum + d.nominal, 0);
-    const persen = Math.min((total / TARGET_DONASI) * 100, 100);
-
-    const fill = document.getElementById("progress_fill");
-    const text = document.getElementById("progress_text");
-
-    if (fill && text) {
-        fill.style.width = persen + "%";
-        text.innerText = `Rp ${total.toLocaleString()} / Rp ${TARGET_DONASI.toLocaleString()}`;
-    }
-}
-
 
 const App = {
-    navigasi(page) {
-        window.location.hash = `#/${page}`;
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    },
+  currentPage: "home",
 
-    logout() {
-        if (confirm("Logout?")) {
-            DataStore.autentikasi.terdaftar = false;
-            alert("Berhasil Logout");
-            this.navigasi("home");
-        }
+  navigasi(page) {
+    window.location.hash = `#/${page}`;
+  },
+
+ prosesLogin() {
+  const user = document.getElementById("user").value;
+  const pass = document.getElementById("pass").value;
+
+  if (user === "" || pass === "") {
+    alert("Username dan Password wajib diisi!");
+    return;
+  }
+
+  DataStore.autentikasi.terdaftar = true;
+  DataStore.autentikasi.username = user;
+
+  alert(`Selamat Datang, ${user}!`);
+  location.hash = "#/home";
+},
+
+  logout() {
+    if (confirm("Apakah anda yakin ingin logout?")) {
+      DataStore.autentikasi.terdaftar = false;
+      DataStore.autentikasi.username = null;
+      location.hash = "#/home";
     }
+  },
+
+  kirimPesan() {
+    const nama = document.getElementById("namaKontak").value;
+    const email = document.getElementById("emailKontak").value;
+    const pesan = document.getElementById("pesanKontak").value;
+
+    if (nama === "" || email === "" || pesan === "") {
+      alert("Mohon lengkapi semua data terlebih dahulu!");
+      return;
+    }
+
+    alert(
+      `Pesan berhasil dikirim!\n\nTerima kasih ${nama} telah menghubungi EduFund 🙏`
+    );
+
+    // reset form
+    document.getElementById("namaKontak").value = "";
+    document.getElementById("emailKontak").value = "";
+    document.getElementById("pesanKontak").value = "";
+  },
 };
 
-function router(){
-    const route = location.hash || "#/home";
 
-    rootApp.innerHTML = navbar();
+function router() {
+  const route = location.hash || "#/home";
+  rootApp.innerHTML = navbar();
 
-    if(route === "#/home") rootApp.innerHTML += home();
-    else if(route === "#/kampanye") rootApp.innerHTML += kampanye();
-    else if(route === "#/donasi") rootApp.innerHTML += donasi();
-    else if(route === "#/relawan") rootApp.innerHTML += relawan();
-    else if(route === "#/kontak") rootApp.innerHTML += kontak();
-    else rootApp.innerHTML += "<h2>404 - Halaman Tidak Ditemukan</h2>";
+  if (route === "#/home") {
+    rootApp.innerHTML += home();
+  } else if (route === "#/kampanye") {
+    rootApp.innerHTML += kampanye();
+  } else if (route === "#/donasi") {
+    rootApp.innerHTML += donasi();
+  } else if (route === "#/login") {
+    rootApp.innerHTML += login();
+  } else if (route === "#/admin") {
+    rootApp.innerHTML += admin();
+  } else if (route === "#/relawan") {
+    rootApp.innerHTML += relawan();
+  } else if (route === "#/kontak") {
+    rootApp.innerHTML += kontak();
+  }
 
-    rootApp.innerHTML += footer();
-
-    if (route === "#/donasi") {
-        setTimeout(updateProgress, 50);
-    }
+  rootApp.innerHTML += footer();
 }
 
-window.addEventListener("load", router);
 window.addEventListener("hashchange", router);
+window.addEventListener("load", router);
