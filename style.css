@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap");
 
 * {
@@ -81,12 +84,6 @@ img {
     align-items: center;
 }
 
-.navbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
 .nav-donasi {
     background-color: var(--accent-color); 
     color: white;
@@ -99,22 +96,6 @@ img {
 .nav-donasi:hover {
     transform: scale(1.05);
 }
-
-.nav-logout {
-    color: #e74c3c;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 50px;
-    padding: 10px 15px;
-    transition: 0.3s ease;
-}
-
-.nav-logout:hover {
-    color: var(--white-color);
-    background-color: var(--primary-color);
-    transform: scale(1.05);
-}
-
 
 /* Footer Section */
 .footer {
@@ -173,8 +154,9 @@ img {
 
 /* Home */
 .home {
-    min-height: 100vh;
-    background: radial-gradient(circle at center, var(--primary-light) 0%, var(--primary-color) 100%);
+    min-height: 120vh;
+    margin-top: -120px;
+    background: var(--primary-light);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -309,7 +291,15 @@ img {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-    height: 250px;
+    height: auto;
+    min-height: 250px;
+    transition: 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.kampanye-card-custom:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 .kampanye-img-box {
@@ -378,6 +368,47 @@ img {
     border-radius: 50px;
     font-weight: 600;
     cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.klik-kampanye:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* Kampanye */
+.halaman-kampanye {
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-halaman {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header-halaman h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.grid-kampanye {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(600px));
+    gap: 30px;
+}
+
+.grid-kampanye .kampanye-card-custom {
+    height: auto; 
+    min-height: 250px;
+    transition: 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.grid-kampanye .kampanye-card-custom:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 
@@ -391,7 +422,7 @@ img {
 }
 
 .login-card {
-    background: white;
+    background: var(--white-color);
     padding: 2.5rem;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     width: 100%;
@@ -428,9 +459,145 @@ img {
     width: 100%;
     padding: 12px;
     background: var(--primary-color);
-    color: white;
+    color: var(--white-color);
     border-radius: 10px;
     font-size: medium;
     font-weight: 700;
     transition: 0.3s;
+}
+
+
+/* admin */
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f7fc;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 9999;
+}
+
+.sidebar-admin {
+    width: 260px;
+    background: #1e3a8a;
+    color: white;
+    padding: 30px 20px;
+}
+
+.sidebar-admin .brand { 
+    font-size: 1.5rem; 
+    font-weight: bold;
+    font-style: italic; 
+    margin-bottom: 40px; 
+    color: var(--primary-color); 
+}
+
+.sidebar-admin nav a { 
+    display: block; 
+    padding: 12px; 
+    color: #cbd5e1; 
+    text-decoration: none; 
+    cursor: pointer; 
+    border-radius: 8px; 
+    margin-bottom: 5px;
+}
+
+.sidebar-admin nav a.active { 
+    background: rgba(255,255,255,0.1); 
+    color: var(--white-color); 
+    font-weight: bold; 
+}
+
+.main-admin { 
+    flex: 1; 
+    padding: 40px; 
+    overflow-y: auto; 
+}
+
+.stats-row { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    margin-bottom: 30px; 
+}
+
+.card-stat { 
+    background: white; 
+    padding: 25px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    text-align: center; 
+}
+
+.data-section { 
+    background: white; 
+    padding: 25px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    margin-bottom: 25px; 
+}
+
+.form-row { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+    margin-bottom: 15px; 
+}
+
+.form-row input, .form-row select { 
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 6px; 
+}
+
+.table-admin { 
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+.table-admin th { 
+    text-align: left; 
+    padding: 12px; 
+    background: var(--primary-color); 
+    border-bottom: 2px solid #eee; 
+    color: var(--white-color);
+}
+
+.table-admin td { 
+    padding: 12px; 
+    border-bottom: 1px solid #eee; 
+}
+
+.btn-submit { 
+    background: var(--primary-color); 
+    color: white; 
+    border: none; 
+    padding: 12px 30px; 
+    border-radius: 8px;
+    cursor: pointer; 
+    font-weight: bold; 
+    transition: 0.3s;
+}
+
+.btn-submit:hover { 
+    background: #09ba82; 
+}
+
+.btn-edit { 
+    background: #f59e0b; 
+    color: white; 
+    border: none; 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    margin-right: 5px; 
+}
+
+.btn-del { 
+    background: #ef4444; 
+    color: white; 
+    border: none; 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+    cursor: pointer; 
 }
